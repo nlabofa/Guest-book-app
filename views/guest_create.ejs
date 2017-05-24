@@ -1,0 +1,58 @@
+<%include partials/header%>
+  <div class="ui raised very padded container segment">
+    <div class="ui centered grid">
+      <div class="eight wide center aligned column">
+        <img src="/assets/ace.png" width="50px;height:auto;">
+        <h1 style="margin-bottom: 0">Join Our Guestbook</h1>
+        <div class="ui statistic">
+          <div class="value">
+            5,550
+          </div>
+          <div class="label">
+            Guests
+          </div>
+        </div>
+        <form class="ui form left aligned six column segment" action="" method="post">
+          <%if(errors != undefined){%>
+            <div class="ui visible negative message">
+              <i class="close icon"></i>
+              <div class="header">
+                <% errors.forEach(function(error){ %>
+                  <li><%=error.msg%></li>
+                    <%})%>
+              </div>
+            </div>
+            <%}%>
+              <%if(success){%>
+                <div class="ui visible success message">
+                  <i class="close icon"></i>
+                  <div class="header">
+                    <h1>Your entry was successful.</h1>
+                  </div>
+                  <p>You are now a valid member of our guestbook.</p>
+                </div>
+                <%}%>
+                  <div class="field">
+                    <label>Full Name</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Full Name">
+                  </div>
+                  <div class="field">
+                    <label>Email</label>
+                    <input type="email" id="email" name="email" placeholder="Email Address">
+                  </div>
+                  <div class="field">
+                    <label>Comment</label>
+                    <textarea name="comment" id="comment"></textarea>
+                  </div>
+                  <div class="field">
+                    <div class="ui checkbox">
+                      <input type="checkbox" name="agree" id="agree" tabindex="0" class="hidden">
+                      <label for="agree">I agree to the Terms and Conditions</label>
+                    </div>
+                  </div>
+                  <button class="ui submit button" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+<%include partials/footer%>

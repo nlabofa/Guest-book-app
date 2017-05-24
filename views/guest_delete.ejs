@@ -1,0 +1,17 @@
+<%include partials/header%>
+	<div class="ui raised very padded container segment">
+		<div class="ui centered grid">
+			<div class="ten wide column">
+				<img src="/assets/ace.png" width="50px;height:auto;">
+        <h1>Delete:&nbsp;&nbsp;<%=guest.fullname%></h1>
+        <p class="strong">Email:&nbsp;<%=guest.email%></p>
+        <p class="strong">Comment:&nbsp;<%=guest.comment%></p>
+        <hr>
+				<p>Do you really want to delete this Guest?</p>
+        <form class="" action="" method="post">
+          <div class="form-group">
+            <input type="hidden" class="form-control" name="id" value="<%=guest._id%>" required="true">
+          </div>
+          <button type="submit" class=" btn btn-primary" name="button">Delete</button>
+        </form>
+			<%include partials/footer%>

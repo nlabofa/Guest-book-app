@@ -1,0 +1,45 @@
+<%include partials/header%>
+		<div class="ui raised very padded container segment">
+			<div class="ui centered grid">
+			    <div class="eight wide center aligned column">
+			    	<img src="/assets/ace.png" width="50px;height:auto;">
+			    	<h1 style="margin-bottom: 0">Edit Guest Entry</h1>
+			    	<form class="ui form left aligned six column segment" action="" method="post">
+							<%if(errors != undefined){%>
+								<div class="ui visible negative message">
+									<i class="close icon"></i>
+									<div class="header">
+										<% errors.forEach(function(error){ %>
+										<%=error.msg%>
+										<%})%><br>
+										 <p>We're sorry we can't update your entry. Try again</p>
+									</div>
+								</div>
+							<%}%>
+							<% if (guest) { %>
+								<div class="field">
+									<label>Full Name</label>
+									<input type="text" id="fullname" name="fullname" placeholder="Full Name" value="<%=guest.fullname%>">
+									</div>
+									<div class="field">
+										<label>Email</label>
+										<input type="email" id="email" name="email" placeholder="Email Address" value ="<%=guest.email%>">
+									</div>
+									<div class="field">
+											<label>Comment</label>
+											<textarea name="comment" id="comment"><%=guest.comment%></textarea>
+									</div>
+									<input type="hidden" id="<%=guest._id%>">
+							<% } %>
+			    	  <div class="field">
+			    	    <div class="ui checkbox">
+			    	      <input type="checkbox" name="agree" checked id="agree" tabindex="0" class="hidden">
+			    	      <label for="agree">I agree to the Terms and Conditions</label>
+			    	    </div>
+			    	  </div>
+			    	  <button class="ui submit button" type="submit">Update</button>
+			    	</form>
+			    </div>
+			</div>
+		</div>
+	<%include partials/footer%>
