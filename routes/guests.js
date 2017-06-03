@@ -23,7 +23,7 @@ router.post('/login', passport.authenticate('local-login', {
     failureFlash: true,
 }));
 router.get('/profile', isLoggedIn, function(req, res) {
-    res.render('profile', { user: req.user });
+    res.render('profile', {});
 });
 
 router.get('/logout', function(req, res) {
@@ -32,17 +32,17 @@ router.get('/logout', function(req, res) {
 });
 router.get('/', guest_controller.index);
 router.get('/guests', guest_controller.guest_list);
-router.get('/guest/create', guest_controller.guest_create_get);
-router.post('/guest/create', guest_controller.guest_create_post);
-router.get('/guest/:id', guest_controller.guest_detail);
-router.post('/guest/:id', guest_controller.guest_update_post);
-router.get('/guest/:id/delete', guest_controller.guest_delete_get);
-router.post('/guest/:id/delete', guest_controller.guest_delete_post);
+router.get('/guest/create', isLoggedIn, guest_controller.guest_create_get);
+router.post('/guest/create', isLoggedIn, guest_controller.guest_create_post);
+router.get('/guest/:id', isLoggedIn, guest_controller.guest_detail);
+router.post('/guest/:id', isLoggedIn, guest_controller.guest_update_post);
+router.get('/guest/:id/delete', isLoggedIn, guest_controller.guest_delete_get);
+router.post('/guest/:id/delete', isLoggedIn, guest_controller.guest_delete_post);
 module.exports = router;
 
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
         return next();
-    res.redirect('/');
+    res.redirect('/user/login');
 }
