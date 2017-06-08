@@ -16,28 +16,28 @@
             My GuestBook
         </div>
         <%if(user){%>
-            <a class="active item" href="/">
+            <a class="item <%=active=='home' ? 'active' : ''%>" href="/">
 		    Home
 		  </a>
-            <a class="item" href="/user/guests">
+            <a class="item <%=active=='guests' ? 'active' : ''%>" href="/user/guests">
 		      View all Guests
 		    </a>
-            <a class="item" href="/user/guest/create">
+            <a class="item <%=active=='newguest' ? 'active' : ''%>" href="/user/guest/create">
 			      Create New Guest
 			    </a>
             <a class="item" href="/user/logout">
 			      Logout
 			    </a>
+            <a class="item">
+			     Hi <%=user.local.email%>
+			    </a>
             <%}else{%>
-                <a class="active item" href="/">
+                <a class="item <%=active=='home' ? 'active' : ''%>" href="/">
 		    Home
 		  </a>
-                <a class="item" href="/user/guests">
+                <a class="item <%=active=='guests' ? 'active' : ''%>" href="/user/guests">
 		      View all Guests
 		    </a>
-                <a class="item" href="/user/guest/create">
-			      Create New Guest
-			    </a>
                 <a class="item" href="/user/login">
 			      Login
 			    </a>

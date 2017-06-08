@@ -1,48 +1,52 @@
 <%include partials/header%>
-	<div class="ui raised very padded container segment">
-		<div class="ui centered grid">
-			<div class="ten wide column">
-				<img src="/assets/ace.png" width="50px;height:auto;">
-				<h1 style="margin-bottom: 0">View all Guests</h1>
+    <div class="ui raised very padded container segment">
+        <div class="ui centered grid">
+            <div class="ten wide column">
+                <img src="/assets/ace.png" width="50px;height:auto;">
+                <h1 style="margin-bottom: 0">View all Guests</h1>
 
-				<div class="ui divided items">
-					<%if(list_guests !== null){%>
-						<%list_guests.forEach(function(guest){%>
-							<div class="item">
-								<div class="content">
-									<a class="header">
-										<%=guest.fullname%>
-									</a>
-									<div class="meta">
-										<span class="cinema"><%=guest.email%></span>
-									</div>
-									<div class="description">
-										<p>
-											<%=guest.comment%>
-										</p>
-									</div>
-									<div class="extra">
-										<a href="<%=guest.url%>">
-											<button class="mini ui button">
+                <div class="ui divided items">
+                    <%if(list_guests !== null){%>
+                        <%list_guests.forEach(function(guest){%>
+                            <div class="item">
+                                <div class="content">
+                                    <a class="header">
+                                        <%=guest.fullname%>
+                                    </a>
+                                    <div class="meta">
+                                        <span class="cinema"><%=guest.email%></span>
+                                    </div>
+                                    <div class="description">
+                                        <p>
+                                            <%=guest.comment%>
+                                        </p>
+                                    </div>
+                                    <%if(user != null){%>
+                                        <div class="extra">
+                                            <a href="<%=guest.url%>">
+                                                <button class="mini ui button">
 												Edit
 										</button>
-										</a>
-										<div class="ui right floated delete negative button">
-											<a href="<%=guest.url%>/delete">
+                                            </a>
+
+
+                                            <div class="ui right floated delete negative button">
+                                                <a href="<%=guest.url%>/delete">
 											Delete Entry
 											<i class="right trash outline icon"></i>
 										</a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<%})%>
-				</div>
-			</div>
-		</div>
-	</div>
+                                            </div>
+                                        </div>
+                                        <%}%>
+                                </div>
+                            </div>
+                            <%})%>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<%} else{%>
-		<h1>There are no Guests at this time.</h1>
-		<%}%>
-			<%include partials/footer%>
+    <%} else{%>
+        <h1>There are no Guests at this time.</h1>
+        <%}%>
+            <%include partials/footer%>

@@ -2,7 +2,7 @@ var Guest = require('../models/guest');
 var async = require('async');
 
 exports.index = function(req, res) {
-    res.render('index', {});
+    res.render('index', { active: 'home' });
 };
 
 exports.guest_list = function(req, res, next) {
@@ -12,13 +12,14 @@ exports.guest_list = function(req, res, next) {
                 return next(err);
             }
             res.render('guest_list', {
-                list_guests: list_guests
+                list_guests: list_guests,
+                active: 'guests'
             });
 
         });
 };
 exports.guest_create_get = function(req, res, next) {
-    res.render('guest_create', {});
+    res.render('guest_create', { active: 'newguest' });
 };
 exports.guest_create_post = function(req, res, next) {
     req.checkBody('fullname', 'Fullname cannot be empty').notEmpty();
@@ -64,7 +65,8 @@ exports.guest_detail = function(req, res, next) {
         }
         res.render('guest_detail', {
             guest: results.guest,
-            //success: 'Edit Successfull'
+            active: 'null'
+                //success: 'Edit Successfull'
         });
 
     });
@@ -109,7 +111,8 @@ exports.guest_delete_get = function(req, res, next) {
             return next(err);
         }
         res.render('guest_delete', {
-            guest: results.guest
+            guest: results.guest,
+            active: 'null'
         });
     });
 };

@@ -23,7 +23,7 @@ router.post('/login', passport.authenticate('local-login', {
     failureFlash: true,
 }));
 router.get('/profile', isLoggedIn, function(req, res) {
-    res.render('profile', {});
+    res.render('profile', { active: 'null' });
 });
 
 router.get('/logout', function(req, res) {

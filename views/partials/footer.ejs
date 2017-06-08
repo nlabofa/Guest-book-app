@@ -1,19 +1,16 @@
 </body>
 <script type="text/javascript">
-  $('.ui.checkbox')
-    .checkbox()
-  ;
-  $('.message .close')
-    .on('click', function() {
-      $(this)
-        .closest('.message')
-        .transition('fade')
-      ;
-    })
-  ;
+    $('.ui.checkbox')
+        .checkbox();
+    $('.message .close')
+        .on('click', function() {
+            $(this)
+                .closest('.message')
+                .transition('fade');
+        });
     $('.small.modal')
-      .modal('attach events', '.delete.button', 'show');
-    ;
+        .modal('attach events', '.delete.button', 'show');;
 </script>
 <script src="/js/main.js"></script>
+
 </html>
