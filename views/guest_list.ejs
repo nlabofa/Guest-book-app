@@ -21,7 +21,7 @@
                                             <%=guest.comment%>
                                         </p>
                                     </div>
-                                    <%if(user != null){%>
+                                    <%if(user.local.email == guest.email){%>
                                         <div class="extra">
                                             <a href="<%=guest.url%>">
                                                 <button class="mini ui button">
